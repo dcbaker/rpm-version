@@ -21,27 +21,38 @@ test(
   )
 )
 
-if add_languages('c', required : false, native : false)
-  c_api = executable(
-    'c_api_test',
-    'c_api_test.c',
-    link_language : 'c',
-    dependencies : dep_rpm_ver_c,
-  )
+enable_c_api_test = not get_option('tests').disabled()
+c_api_link_language = 'c'
+if get_option('default_library') == 'static'
+  # If we've statically linked then we have to use the C++ linker :/
+  c_api_link_language = 'cpp'
+else
+  enable_c_api_test = add_languages('c', required : false, native : false)
+endif
 
-  cases = [
-    ['4', '<', '2', '1'],
-    ['1', '<', '2', '0'],
-    ['4', '>', '2', '0'],
-    ['1', '>', '2', '1'],
-  ]
-
-  foreach case : cases
-    test(
-      '@0@@1@@2@ is @3@'.format(case[0], case[1], case[2], case[3] == '0' ? 'true' : 'false'),
-      c_api,
-      args : case,
-      suite : 'C API'
+if enable_c_api_test
+  if add_languages('c', required : false, native : false)
+    c_api = executable(
+      'c_api_test',
+      'c_api_test.c',
+      link_language : c_api_link_language,
+      dependencies : dep_rpm_ver_c,
     )
-  endforeach
+
+    cases = [
+      ['4', '<', '2', '1'],
+      ['1', '<', '2', '0'],
+      ['4', '>', '2', '0'],
+      ['1', '>', '2', '1'],
+    ]
+
+    foreach case : cases
+      test(
+        '@0@@1@@2@ is @3@'.format(case[0], case[1], case[2], case[3] == '0' ? 'true' : 'false'),
+        c_api,
+        args : case,
+        suite : 'C API'
+      )
+    endforeach
+  endif
 endif
