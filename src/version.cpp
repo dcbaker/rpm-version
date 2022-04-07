@@ -104,4 +104,4 @@ bool compare(std::string_view v1, const Operator & op, std::string_view v2) {
     return compare_impl(itr1 != str1.end(), op, itr2 != str2.end());
 }
 
-} // namespace MIR::Version
+} // namespace RPMVersion

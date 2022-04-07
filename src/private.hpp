@@ -11,4 +11,4 @@ namespace RPMVersion {
 
 std::string to_string(const Operator & op);
 
-} // namespace MIR::Version
+} // namespace RPMVersion
