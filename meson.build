@@ -4,7 +4,7 @@
 project(
   'rpm-version',
   'cpp',
-  version : '0.1.0',
+  version : '0.2.0-devel',
   meson_version : '>= 0.57',
   license : 'Apache-2.0 OR GPL-2.0',
   default_options : ['cpp_std=c++17', 'c_std=c99'],
