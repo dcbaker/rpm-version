@@ -35,7 +35,7 @@ std::vector<std::tuple<std::string, bool>> split_values(std::string_view str) {
     return out;
 }
 
-template <typename T> bool compare_impl(const T & in1, const Operator & op, const T & in2) {
+template <typename T> bool compare_impl(const T & in1, const Operator op, const T & in2) {
     switch (op) {
         case Operator::LT:
             return in1 < in2;
@@ -55,7 +55,7 @@ template <typename T> bool compare_impl(const T & in1, const Operator & op, cons
 
 } // namespace
 
-std::string to_string(const Operator & op) {
+std::string to_string(const Operator op) {
     switch (op) {
         case Operator::LT:
             return "<";
@@ -73,7 +73,7 @@ std::string to_string(const Operator & op) {
     throw std::exception{}; // Should be unreachable
 }
 
-bool compare(std::string_view v1, const Operator & op, std::string_view v2) {
+bool compare(std::string_view v1, const Operator op, std::string_view v2) {
     // Drop any non-alphanumeric characters, those are not compared
     const std::vector<std::tuple<std::string, bool>> str1 = split_values(v1);
     const std::vector<std::tuple<std::string, bool>> str2 = split_values(v2);

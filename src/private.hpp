@@ -9,6 +9,6 @@
 
 namespace RPMVersion {
 
-std::string to_string(const Operator & op);
+std::string to_string(const Operator op);
 
 } // namespace RPMVersion
