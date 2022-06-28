@@ -14,17 +14,17 @@ extern "C" {
 #endif
 
 enum rpm_version_op {
-    /// Less than
+    /** Less than */
     RPM_VER_LT,
-    /// Less than or equal
+    /** Less than or equal */
     RPM_VER_LE,
-    /// equal
+    /** equal */
     RPM_VER_NE,
-    /// Not Equal
+    /** Not Equal */
     RPM_VER_EQ,
-    /// Greater than or equal
+    /** Greater than or equal */
     RPM_VER_GE,
-    /// Greater than
+    /** Greater than */
     RPM_VER_GT,
 };
 
