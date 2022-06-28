@@ -75,8 +75,8 @@ std::string to_string(const Operator op) {
 
 bool compare(std::string_view v1, const Operator op, std::string_view v2) {
     // Drop any non-alphanumeric characters, those are not compared
-    const std::vector<std::tuple<std::string, bool>> str1 = split_values(v1);
-    const std::vector<std::tuple<std::string, bool>> str2 = split_values(v2);
+    const std::vector<std::tuple<std::string, bool>> & str1 = split_values(v1);
+    const std::vector<std::tuple<std::string, bool>> & str2 = split_values(v2);
 
     auto itr1 = str1.begin();
     auto itr2 = str2.begin();
