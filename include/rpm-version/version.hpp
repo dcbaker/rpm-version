@@ -35,6 +35,6 @@ enum class Operator {
  * @param ver2 The first version to compare
  * @return True if the comparison is successful, otherwise false
  */
-bool compare(std::string_view ver1, const Operator & op, std::string_view ver2);
+bool compare(std::string_view ver1, const Operator op, std::string_view ver2);
 
 } // namespace RPMVersion
