@@ -1,6 +1,7 @@
-// SPDX-license-identifier: Apache-2.0 OR GPL-2.0
-// Copyright © 2022 Intel Corporation
+// SPDX-License-Identifier: Apache-2.0 OR GPL-2.0
+// Copyright © 2022-2024 Intel Corporation
 
+#include "private.hpp"
 #include "rpm-version/version.h"
 #include "rpm-version/version.hpp"
 
@@ -21,8 +22,7 @@ RPMVersion::Operator from_c(rpm_version_op op) {
         case RPM_VER_GT:
             return RPMVersion::Operator::gt;
         default:
-            /* Should not be possible to reach here */
-            abort();
+            RPM_VERSION_UNREACHABLE("Unsupported operator");
     }
 }
 
