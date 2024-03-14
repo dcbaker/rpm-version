@@ -1,5 +1,5 @@
-// SPDX-license-identifier: Apache-2.0 OR GPL-2.0
-// Copyright © 2021-2022 Intel Corporation
+// SPDX-License-Identifier: Apache-2.0 OR GPL-2.0
+// Copyright © 2021-2024 Intel Corporation
 
 /**
  * C++ API for RPMVersion
@@ -14,17 +14,17 @@ namespace RPMVersion {
 /// What kind of operation is being done
 enum class Operator {
     /// Less than
-    LT,
+    lt,
     /// Less than or equal
-    LE,
+    le,
     /// equal
-    NE,
+    ne,
     /// Not Equal
-    EQ,
+    eq,
     /// Greater than or equal
-    GE,
+    ge,
     /// Greater than
-    GT,
+    gt,
 };
 
 /**

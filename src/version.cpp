@@ -37,17 +37,17 @@ std::vector<std::tuple<std::string, bool>> split_values(std::string_view str) {
 
 template <typename T> bool compare_impl(const T & in1, const Operator op, const T & in2) {
     switch (op) {
-        case Operator::LT:
+        case Operator::lt:
             return in1 < in2;
-        case Operator::LE:
+        case Operator::le:
             return in1 <= in2;
-        case Operator::EQ:
+        case Operator::eq:
             return in1 == in2;
-        case Operator::NE:
+        case Operator::ne:
             return in1 != in2;
-        case Operator::GE:
+        case Operator::ge:
             return in1 >= in2;
-        case Operator::GT:
+        case Operator::gt:
             return in1 > in2;
     }
     throw std::exception{}; // Should be unreachable
@@ -57,17 +57,17 @@ template <typename T> bool compare_impl(const T & in1, const Operator op, const 
 
 std::string to_string(const Operator op) {
     switch (op) {
-        case Operator::LT:
+        case Operator::lt:
             return "<";
-        case Operator::LE:
+        case Operator::le:
             return "<=";
-        case Operator::EQ:
+        case Operator::eq:
             return "==";
-        case Operator::NE:
+        case Operator::ne:
             return "!=";
-        case Operator::GE:
+        case Operator::ge:
             return ">=";
-        case Operator::GT:
+        case Operator::gt:
             return ">";
     }
     throw std::exception{}; // Should be unreachable
