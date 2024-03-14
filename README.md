@@ -66,6 +66,6 @@ int main(void) {
 #include <rpm-version/version.hpp>
 
 int main() {
-    return PRMVersion::compare("1.2.3", RPMVersion::Operator::LT, "4.5");
+    return PRMVersion::compare("1.2.3", RPMVersion::Operator::lt, "4.5");
 }
 ```
