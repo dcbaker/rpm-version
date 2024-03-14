@@ -1,5 +1,5 @@
-# SPDX-license-identifier: Apache-2.0 OR GPL-2.0
-# Copyright © 2022 Intel Corporation
+# SPDX-License-Identifier: Apache-2.0 OR GPL-2.0
+# Copyright © 2022-2024 Intel Corporation
 
 project(
   'rpm-version',
@@ -9,6 +9,8 @@ project(
   license : 'Apache-2.0 OR GPL-2.0',
   default_options : ['cpp_std=c++17', 'c_std=c99'],
 )
+
+so_version = meson.project_version().split('-')[0]
 
 inc = include_directories('include')
 
@@ -24,6 +26,7 @@ lib_cpp = library(
   'rpm-version++',
   link_whole : lib_priv,
   install : true,
+  version : so_version,
 )
 
 pkg.generate(
@@ -44,6 +47,7 @@ lib_c = library(
   link_with : lib_priv,
   include_directories : inc,
   install : true,
+  version : so_version,
 )
 
 pkg.generate(
