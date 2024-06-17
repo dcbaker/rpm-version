@@ -14,15 +14,6 @@ so_version = meson.project_version().split('-')[0]
 
 inc = include_directories('include')
 
-cpp = meson.get_compiler('cpp')
-
-foreach f : ['unreachable']
-  add_project_arguments(
-    '-DRPM_VERSION_HAS_UNREACHABLE=@0@'.format(cpp.has_function(f).to_int()),
-    language : 'cpp',
-  )
-endforeach
-
 lib_priv = static_library(
   'rv-impl',
   'src/version.cpp',
