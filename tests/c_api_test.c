@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright © 2022-2024 Intel Corporation
 
+#include "rpm-version/version.h"
+
 #include <assert.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
-
-#include "rpm-version/version.h"
 
 static enum rpm_version_op op_from_str(const char * raw) {
     if (strcmp(raw, ">=") == 0) {
