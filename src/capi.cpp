@@ -4,6 +4,9 @@
 #include "rpm-version/version.h"
 #include "rpm-version/version.hpp"
 
+#include <stdexcept>
+#include <iostream>
+
 namespace {
 
 RPMVersion::Operator from_c(rpm_version_op op) {
@@ -31,6 +34,11 @@ RPMVersion::Operator from_c(rpm_version_op op) {
 extern "C" {
 
 bool rpm_version_compare(const char * ver1, enum rpm_version_op op, const char * ver2) {
-    return RPMVersion::compare(ver1, from_c(op), ver2);
+    try {
+        return RPMVersion::compare(ver1, from_c(op), ver2);
+    } catch (std::invalid_argument & e) {
+        std::cerr << "Unexpected error: " << e.what() << std::endl;
+        abort();
+    }
 }
 }
