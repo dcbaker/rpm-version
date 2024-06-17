@@ -11,5 +11,5 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = false
 
-[{meson.build,meson_options.txt}]
+[{meson.build,meson_options.txt,*.yml}]
 indent_size = 2

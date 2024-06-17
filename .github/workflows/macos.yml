@@ -1,0 +1,25 @@
+name: MacOS
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  meson:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+      - name: Update Homebrew
+        run: |
+          brew update
+          brew install ninja
+      - uses: BSFishy/meson-build@v1.0.3
+        with:
+          # Need a new version of Meson to correctly understand the newer MacOS linker
+          meson-version: 1.2
+          action: test
+          directory: builddir
