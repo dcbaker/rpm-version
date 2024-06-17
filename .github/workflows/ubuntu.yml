@@ -35,10 +35,10 @@ jobs:
         run: |
           sudo apt update
           sudo apt install ccache clang
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
       - name: Setup ccache
-        uses: hendrikmuhs/ccache-action@v1.0.5
+        uses: hendrikmuhs/ccache-action@v1.2
         with:
           key: ${{ matrix.id }}
       - uses: BSFishy/meson-build@v1.0.3
