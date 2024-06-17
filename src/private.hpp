@@ -3,9 +3,9 @@
 
 #pragma once
 
-#include <string>
-
 #include "rpm-version/version.hpp"
+
+#include <string>
 
 namespace RPMVersion {
 

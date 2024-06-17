@@ -1,9 +1,9 @@
 // SPDX-license-identifier: Apache-2.0
 // Copyright © 2022 Intel Corporation
 
-#include <gtest/gtest.h>
-
 #include "private.hpp"
+
+#include <gtest/gtest.h>
 
 namespace V = RPMVersion;
 using V::to_string;

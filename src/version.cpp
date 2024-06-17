@@ -1,11 +1,11 @@
 // SPDX-license-identifier: Apache-2.0 OR GPL-2.0
 // Copyright © 2022 Intel Corporation
 
+#include "private.hpp"
+
 #include <stdexcept>
 #include <tuple>
 #include <vector>
-
-#include "private.hpp"
 
 namespace RPMVersion {
 
@@ -51,7 +51,7 @@ template <typename T> bool compare_impl(const T & in1, const Operator op, const 
         case Operator::gt:
             return in1 > in2;
         default:
-            throw std::logic_error{"Got an unexpected version comparison operator"};
+            throw std::invalid_argument{"Got an unexpected version comparison operator"};
     }
 }
 
@@ -72,7 +72,7 @@ std::string to_string(const Operator op) {
         case Operator::gt:
             return ">";
         default:
-            throw std::logic_error{"Unexpected version compare operator"};
+            throw std::invalid_argument{"Unexpected version compare operator"};
     }
 }
 
