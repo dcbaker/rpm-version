@@ -43,8 +43,7 @@ jobs:
           key: ${{ matrix.id }}
       - uses: BSFishy/meson-build@v1.0.3
         with:
-          # Use 0.60 to get graceful failures of gtest protocol
-          meson-version: 0.60.3
+          meson-version: 0.64
           setup-options: ${{ matrix.cfg.setup_options }}
           action: test
           directory: builddir

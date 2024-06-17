@@ -7,7 +7,7 @@ dep_gtest = dependency(
   'gtest_main',
   required : get_option('tests'),
   disabler : true,
-  fallback : ['gtest', 'gtest_main_dep'],
+  allow_fallback : true,
 )
 
 test(
