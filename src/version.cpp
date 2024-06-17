@@ -1,6 +1,7 @@
 // SPDX-license-identifier: Apache-2.0 OR GPL-2.0
 // Copyright © 2022 Intel Corporation
 
+#include <stdexcept>
 #include <tuple>
 #include <vector>
 
@@ -49,8 +50,9 @@ template <typename T> bool compare_impl(const T & in1, const Operator op, const 
             return in1 >= in2;
         case Operator::gt:
             return in1 > in2;
+        default:
+            throw std::logic_error{"Got an unexpected version comparison operator"};
     }
-    throw std::exception{}; // Should be unreachable
 }
 
 } // namespace
@@ -69,8 +71,9 @@ std::string to_string(const Operator op) {
             return ">=";
         case Operator::gt:
             return ">";
+        default:
+            throw std::logic_error{"Unexpected version compare operator"};
     }
-    throw std::exception{}; // Should be unreachable
 }
 
 bool compare(std::string_view v1, const Operator op, std::string_view v2) {
