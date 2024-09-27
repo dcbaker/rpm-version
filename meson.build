@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: Apache-2.0 OR GPL-2.0
+# SPDX-License-Identifier : Apache-2.0 OR GPL-2.0
 # Copyright © 2022-2024 Intel Corporation
 
 project(
@@ -41,29 +41,35 @@ dep_rpm_ver_cpp = declare_dependency(
 
 meson.override_dependency('rpm-version-c++', dep_rpm_ver_cpp)
 
-lib_c = library(
-  'rpm-version',
-  'src/capi.cpp',
-  link_with : lib_priv,
-  include_directories : inc,
-  install : true,
-  version : so_version,
-)
+if get_option('c-bindings')
+  lib_c = library(
+    'rpm-version',
+    'src/capi.cpp',
+    link_with : lib_priv,
+    include_directories : inc,
+    install : true,
+    version : so_version,
+  )
 
-pkg.generate(
-  lib_c,
-  name : 'rpm-version-c',
-)
+  pkg.generate(
+    lib_c,
+    name : 'rpm-version-c',
+  )
 
-dep_rpm_ver_c = declare_dependency(
-  link_with : lib_c,
-  include_directories : inc,
-)
+  dep_rpm_ver_c = declare_dependency(
+    link_with : lib_c,
+    include_directories : inc,
+  )
 
-meson.override_dependency('rpm-version-c', dep_rpm_ver_c)
+  meson.override_dependency('rpm-version-c', dep_rpm_ver_c)
+
+  install_headers(
+    'include/rpm-version/version.h',
+    subdir : 'rpm-version',
+  )
+endif
 
 install_headers(
-  'include/rpm-version/version.h',
   'include/rpm-version/version.hpp',
   subdir : 'rpm-version',
 )

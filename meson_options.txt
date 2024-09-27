@@ -6,3 +6,9 @@ option(
   type : 'feature',
   description : 'Whether to enable tests or not',
 )
+option(
+  'c-bindings',
+  type : 'boolean',
+  value : true,
+  description : 'whether to build and install C bindings.',
+)
