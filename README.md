@@ -10,7 +10,7 @@ RPM uses. It's implemented in C++ 17, but provides a stable C API as well.
 
 ## Why?
 
-Because in build system land it turns out that you need this sort of stuff, a lot.
+Because in low level tooling like build systems and dependency managers this is a common problem.
 
 
 ## What's the status?
@@ -24,9 +24,15 @@ incompatible changes.
 rpm-version provides pkg-config files, so you can install it, and add the
 pkg-config files to your `$PKG_CONFIG_PATH`, then use whatever `pkg-config`
 facility goes along with your build system, looking for either `rpm-version-c`
-or `rpm-version-c++`, depnding on whether you want the C or C++ API.
+or `rpm-version-c++`, depending on whether you want the C or C++ API.
 
-If you're using meson, it also supports being used as a subproject.
+### Which build system should I use?
+
+Anyone packaging rpm-version or otherwise distributing it in binary format
+should use Meson, this is the upstream supported build system. Additional build
+systems may be supported in more limited form as sub-components of a larger build. For example, CMake's `FetchContent`
+
+### Meson Subproject
 
 Add the following wrap files to your `subprojects` directory:
 
@@ -48,6 +54,18 @@ your meson.build and use as normal. you may want to use
 `dependency('rpm-version-c++', default_options : ['default_library=static'])`,
 which will instruct meson to build rpm-version as a static library instead of a
 dynamic one.
+
+### CMake FetchContent
+
+```cmake
+include(FetchContent)
+FetchContent_Declare(
+    rpm-version
+    URL https://github.com/dcbaker/rpm-version/archive/v0.0.2.tar.gz
+    URL_HASH SHA256=<TODO>
+    SOURCE_SUBDIR cmake
+)
+```
 
 ## How do I use the C API?
 
